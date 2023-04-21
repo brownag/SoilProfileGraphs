@@ -4,6 +4,8 @@
 # SoilProfileGraphs
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/brownag/SoilProfileGraphs/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/brownag/SoilProfileGraphs/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of SoilProfileGraphs is to provide extensions for ‘aqp’ and
@@ -35,22 +37,40 @@ lab <- soilDB::fetchLDM(spc$pedlabsampnum)
 #> converting profile IDs from integer to character
 
 spg(
+  lab,
   system.file("extdata", "sueredo.png",
               package = "SoilProfileGraphs"),
-  spc = lab,
   prop = "sand_total",
   depth_min = -3,
   depth_max = 185,
+  no_data_value = 76.5,
   prop_min = 65,
   prop_max = 95
 )
-#> Loading required namespace: mpspline2
 #> 2 depth range(s) with missing analytical data removed from 34504.
-#> Scale for y is already present.
-#> Adding another scale for y, which will replace the existing scale.
-#> Scale for y is already present.
-#> Adding another scale for y, which will replace the existing scale.
-#> Warning: Removed 12 rows containing missing values (`geom_path()`).
 ```
 
-<img src="man/figures/README-example-1.jpeg" width="100%" />
+<img src="man/figures/README-example-sueredo-1.jpeg" width="100%" />
+
+``` r
+spc <- readRDS(system.file("extdata", "aecpedons.rds",
+                           package = "SoilProfileGraphs"))[3, ]
+lab <- soilDB::fetchLDM(spc$pedlabsampnum)
+#> single result set, returning a data.frame
+#> converting profile IDs from integer to character
+
+spg(
+  lab,
+  system.file("extdata", "buttelake.png",
+              package = "SoilProfileGraphs"),
+  prop = "sand_total",
+  depth_min = -3,
+  depth_max = 165,
+  no_data_value = 76.5,
+  prop_min = 50,
+  prop_max = 100
+)
+#> 1 depth range(s) with missing analytical data removed from 34099.
+```
+
+<img src="man/figures/README-example-buttelake-1.jpeg" width="100%" />

@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 # SoilProfileGraphs
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/brownag/SoilProfileGraphs/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/brownag/SoilProfileGraphs/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of SoilProfileGraphs is to provide extensions for 'aqp' and 'ggplot2' for creation of soil profile-related graphics. The first focus is on 'calibrated' pit photographs with overplotting of soil property data.
@@ -34,7 +35,7 @@ remotes::install_github("brownag/SoilProfileGraphs")
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
+```{r example-sueredo}
 library(SoilProfileGraphs)
 library(soilDB)
 
@@ -43,14 +44,32 @@ spc <- readRDS(system.file("extdata", "aecpedons.rds",
 lab <- soilDB::fetchLDM(spc$pedlabsampnum)
 
 spg(
+  lab,
   system.file("extdata", "sueredo.png",
               package = "SoilProfileGraphs"),
-  spc = lab,
   prop = "sand_total",
   depth_min = -3,
   depth_max = 185,
   no_data_value = 76.5,
   prop_min = 65,
   prop_max = 95
+)
+```
+
+```{r example-buttelake}
+spc <- readRDS(system.file("extdata", "aecpedons.rds",
+                           package = "SoilProfileGraphs"))[3, ]
+lab <- soilDB::fetchLDM(spc$pedlabsampnum)
+
+spg(
+  lab,
+  system.file("extdata", "buttelake.png",
+              package = "SoilProfileGraphs"),
+  prop = "sand_total",
+  depth_min = -3,
+  depth_max = 165,
+  no_data_value = 76.5,
+  prop_min = 50,
+  prop_max = 100
 )
 ```

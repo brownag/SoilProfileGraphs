@@ -13,6 +13,8 @@ spg(
   depth_max = 200,
   prop_min = NULL,
   prop_max = NULL,
+  spline = FALSE,
+  midpoint = FALSE,
   xlab = prop,
   ylab = "Depth, cm",
   no_data_value = NULL,
@@ -39,6 +41,10 @@ spg(
 \item{prop_min}{Property minimum value}
 
 \item{prop_max}{Property maximum value}
+
+\item{spline}{Default: \code{FALSE}}
+
+\item{midpoint}{Default: \code{FALSE} If \code{spline=FALSE} use midpoints of horizons?}
 
 \item{xlab}{x-axis label}
 
