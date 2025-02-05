@@ -12,6 +12,7 @@ Provides extensions for 'aqp' and 'ggplot2' for creation of soil profile-related
 Useful links:
 \itemize{
   \item \url{https://github.com/brownag/SoilProfileGraphs}
+  \item \url{http://humus.rocks/SoilProfileGraphs/}
   \item Report bugs at \url{https://github.com/brownag/SoilProfileGraphs/issues}
 }
 
